@@ -5,8 +5,140 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ToolBox"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ToolBox" Height="600" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        >
+      
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary
+                    Source="Styles\Colors.xaml" />
+                <ResourceDictionary
+                    Source="Styles\Buttons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+  
+    <Window.Background>
+        <SolidColorBrush Color="{StaticResource MainBackgroundColor}" />
+    </Window.Background>
+
+    <!--#region z`Menu button animation  -->
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuOpen}" />
+        </EventTrigger>
+        <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonCloseMenu">
+            <BeginStoryboard Storyboard="{StaticResource MenuClose}" />
+        </EventTrigger>
+    </Window.Triggers>
+    <!--#endregion-->
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="65" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="47" />
+        </Grid.RowDefinitions>
+
+        <!--#region Header grid  -->
+        <Grid x:Name="GridHeader" Grid.Row="0">
+            <TextBlock x:Name="TextBlockModuleName"
+                           Text="Module Name" 
+                           Foreground="#ff7AC1FF" 
+                           FontSize="24" 
+                           FontFamily="Century Gothic" 
+                           FontStyle="Italic"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           />
+            <Button Style="{StaticResource ExitButton}"
+                    HorizontalAlignment="Right" Width="55" 
+                    Click="ButtonExit_Click"/>
+
+        </Grid>
+        <!--#endregion-->
+
+
+        <!--#region   Bottom grid  -->
+        <Border Grid.Row="2" BorderThickness="0 2 0 0">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="{StaticResource BorderMainColor}" />
+            </Border.BorderBrush>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="160" />
+                </Grid.ColumnDefinitions>
+
+            </Grid>
+        </Border>
+
+
+        <!--#region  Menu  - Width=250 -->
+        <Grid x:Name="GridMenu" Grid.RowSpan="3" HorizontalAlignment="Left" Width="50">
+            <Grid.Background>
+                <SolidColorBrush Color="{StaticResource MainBackgroundColor}"/>
+            </Grid.Background>
+
+            <Border BorderThickness="0,0,2,0" Background="{x:Null}">
+                <Border.BorderBrush>
+                    <SolidColorBrush Color="{StaticResource BorderMainColor}" />
+                </Border.BorderBrush>
+
+                <StackPanel>
+
+                    <!--#region  Button Menu  -->
+                    <Grid Height="55">
+                        <Grid.Background>
+                            <SolidColorBrush Color="{StaticResource FirstApplicationColor}" />
+                        </Grid.Background>
+                        <Button x:Name="ButtonCloseMenu" Width="40" Height="40"
+                                Style="{StaticResource MenuButton}"
+                                Background="{x:Null}" BorderBrush="{x:Null}"
+                                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                Visibility="Hidden"
+                                Margin="0 0 5 8"
+                                Click="ButtonCloseMenu_Click">
+                            <Viewbox Width="28" Height="28">
+                                <Canvas Width="24" Height="24">
+                                    <Path Data="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z">
+                                        <Path.Fill>
+                                            <SolidColorBrush Color="{StaticResource MainBackgroundColor}" />
+                                        </Path.Fill>
+                                    </Path>
+                                </Canvas>
+                            </Viewbox>
+                        </Button>
+                        <Button x:Name="ButtonOpenMenu"  Width="40" Height="40"
+                                Style="{StaticResource MenuButton}"
+                                Background="{x:Null}" BorderBrush="{x:Null}"
+                                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                Margin="0 0 5 8"
+                                Click="ButtonOpenMenu_Click">
+                            <Viewbox Width="28" Height="28">
+                                <Canvas Width="24" Height="24">
+                                    <Path Data="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z">
+                                        <Path.Fill>
+                                            <SolidColorBrush Color="{StaticResource MainBackgroundColor}" />
+                                        </Path.Fill>
+                                    </Path>
+                                </Canvas>
+                            </Viewbox>
+                        </Button>
+                    </Grid>
+                    <!--#endregion-->
+
+                </StackPanel>
+
+            </Border>
+            
+        </Grid>
+        <!--#endregion-->
         
+
     </Grid>
+
 </Window>

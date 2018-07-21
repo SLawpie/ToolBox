@@ -16,7 +16,7 @@ using System.Windows.Shapes;
 namespace ToolBox
 {
     /// <summary>
-    /// Logika interakcji dla klasy MainWindow.xaml
+    /// Logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
@@ -24,5 +24,23 @@ namespace ToolBox
         {
             InitializeComponent();
         }
+
+        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonCloseMenu.Visibility = Visibility.Visible;
+            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+        }
+
+        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ButtonOpenMenu.Visibility = Visibility.Visible;
+            ButtonCloseMenu.Visibility = Visibility.Collapsed;
+        }
+
+        private void ButtonExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
     }
 }
