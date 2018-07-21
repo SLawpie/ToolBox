@@ -3,11 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:ToolBox.ViewModels"
         xmlns:local="clr-namespace:ToolBox"
         mc:Ignorable="d"
         Title="ToolBox" Height="600" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        MouseDown="WindowMouseDown"
         >
-      
+    <Window.DataContext>
+        <viewModels:MainWindowViewModel />
+    </Window.DataContext>  
+    
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -23,7 +28,7 @@
         <SolidColorBrush Color="{StaticResource MainBackgroundColor}" />
     </Window.Background>
 
-    <!--#region z`Menu button animation  -->
+    <!--#region  Menu button animation  -->
     <Window.Triggers>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="ButtonOpenMenu">
             <BeginStoryboard Storyboard="{StaticResource MenuOpen}" />
@@ -44,7 +49,7 @@
         <!--#region Header grid  -->
         <Grid x:Name="GridHeader" Grid.Row="0">
             <TextBlock x:Name="TextBlockModuleName"
-                           Text="Module Name" 
+                           Text="{Binding ModuleName}" 
                            Foreground="#ff7AC1FF" 
                            FontSize="24" 
                            FontFamily="Century Gothic" 
@@ -54,7 +59,7 @@
                            />
             <Button Style="{StaticResource ExitButton}"
                     HorizontalAlignment="Right" Width="55" 
-                    Click="ButtonExit_Click"/>
+                    Command="{Binding ButtonExit}" />
 
         </Grid>
         <!--#endregion-->
@@ -75,7 +80,7 @@
 
             </Grid>
         </Border>
-
+        <!--#endregion -->
 
         <!--#region  Menu  - Width=250 -->
         <Grid x:Name="GridMenu" Grid.RowSpan="3" HorizontalAlignment="Left" Width="50">
@@ -99,9 +104,9 @@
                                 Style="{StaticResource MenuButton}"
                                 Background="{x:Null}" BorderBrush="{x:Null}"
                                 HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                Visibility="Hidden"
+                                Visibility="{Binding ButtonMenuCloseVisibility}"
                                 Margin="0 0 5 8"
-                                Click="ButtonCloseMenu_Click">
+                                Command="{Binding ButtonMenuCloseClick}">
                             <Viewbox Width="28" Height="28">
                                 <Canvas Width="24" Height="24">
                                     <Path Data="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z">
@@ -116,8 +121,9 @@
                                 Style="{StaticResource MenuButton}"
                                 Background="{x:Null}" BorderBrush="{x:Null}"
                                 HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                Visibility="{Binding ButtonMenuOpenVisibility}"
                                 Margin="0 0 5 8"
-                                Click="ButtonOpenMenu_Click">
+                                Command="{Binding ButtonMenuOpenClick}">
                             <Viewbox Width="28" Height="28">
                                 <Canvas Width="24" Height="24">
                                     <Path Data="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z">

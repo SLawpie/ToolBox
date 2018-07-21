@@ -25,22 +25,9 @@ namespace ToolBox
             InitializeComponent();
         }
 
-        private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
+        public void WindowMouseDown(object sender, MouseButtonEventArgs e)
         {
-            ButtonCloseMenu.Visibility = Visibility.Visible;
-            ButtonOpenMenu.Visibility = Visibility.Collapsed;
+            DragMove();
         }
-
-        private void ButtonCloseMenu_Click(object sender, RoutedEventArgs e)
-        {
-            ButtonOpenMenu.Visibility = Visibility.Visible;
-            ButtonCloseMenu.Visibility = Visibility.Collapsed;
-        }
-
-        private void ButtonExit_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
     }
 }
