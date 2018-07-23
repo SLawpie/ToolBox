@@ -6,7 +6,7 @@
         xmlns:viewModels="clr-namespace:ToolBox.ViewModels"
         xmlns:local="clr-namespace:ToolBox"
         mc:Ignorable="d"
-        Title="ToolBox" Height="600" Width="1000" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
+        Title="ToolBox" Height="600" Width="1100" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
         MouseDown="WindowMouseDown"
         >
     <Window.DataContext>
@@ -16,10 +16,10 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary
-                    Source="Styles\Colors.xaml" />
-                <ResourceDictionary
-                    Source="Styles\Buttons.xaml" />
+                <ResourceDictionary Source="Styles\Colors.xaml" />
+                <ResourceDictionary Source="Styles\Buttons.xaml" />
+                <ResourceDictionary Source="Styles\ComboBoxes.xaml" />
+                <ResourceDictionary Source="Styles\TextBlocks.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -64,6 +64,11 @@
         </Grid>
         <!--#endregion-->
 
+        <!--#region   Main frame  -->
+        <Frame Grid.Row="1" x:Name="ContentPage" Margin="60 10 10 10" NavigationUIVisibility="Hidden">
+
+        </Frame>
+        <!--#endregion-->
 
         <!--#region   Bottom grid  -->
         <Border Grid.Row="2" BorderThickness="0 2 0 0">
@@ -76,7 +81,22 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="160" />
+                    <ColumnDefinition Width="50" />
                 </Grid.ColumnDefinitions>
+
+
+                <StackPanel Grid.Column="4" 
+                                VerticalAlignment="Center" 
+                                HorizontalAlignment="Left">
+                    <ComboBox x:Name="ComboBoxSelectLanguage" 
+                                  SelectedIndex="0"
+                                  Margin="0,0,0,0"
+                                  >
+                        <ComboBoxItem Content="EN" />
+                        <ComboBoxItem Content="PL" />
+                    </ComboBox>
+                </StackPanel>
+
 
             </Grid>
         </Border>
@@ -87,63 +107,91 @@
             <Grid.Background>
                 <SolidColorBrush Color="{StaticResource MainBackgroundColor}"/>
             </Grid.Background>
+            
 
-            <Border BorderThickness="0,0,2,0" Background="{x:Null}">
+            <Border Grid.Row="0" BorderThickness="0,0,2,0" Background="{x:Null}">
                 <Border.BorderBrush>
                     <SolidColorBrush Color="{StaticResource BorderMainColor}" />
                 </Border.BorderBrush>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="47"/>
+                    </Grid.RowDefinitions>
+                    
+                    <StackPanel Grid.Row="0">
 
-                <StackPanel>
+                        <!--#region  Button Menu  -->
+                        <Grid Height="55">
+                            <Grid.Background>
+                                <SolidColorBrush Color="{StaticResource FirstApplicationColor}" />
+                            </Grid.Background>
+                            <Button x:Name="ButtonCloseMenu" Width="40" Height="40"
+                                    Style="{StaticResource MenuButton}"
+                                    Background="{x:Null}" BorderBrush="{x:Null}"
+                                    HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                    Visibility="{Binding ButtonMenuCloseVisibility}"
+                                    Margin="0 0 5 8"
+                                    Command="{Binding ButtonMenuCloseClick}">
+                                <Viewbox Width="28" Height="28">
+                                    <Canvas Width="24" Height="24">
+                                        <Path Data="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z">
+                                            <Path.Fill>
+                                                <SolidColorBrush Color="{StaticResource MainBackgroundColor}" />
+                                            </Path.Fill>
+                                        </Path>
+                                    </Canvas>
+                                </Viewbox>
+                            </Button>
+                            <Button x:Name="ButtonOpenMenu"  Width="40" Height="40"
+                                    Style="{StaticResource MenuButton}"
+                                    Background="{x:Null}" BorderBrush="{x:Null}"
+                                    HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                    Visibility="{Binding ButtonMenuOpenVisibility}"
+                                    Margin="0 0 5 8"
+                                    Command="{Binding ButtonMenuOpenClick}">
+                                <Viewbox Width="28" Height="28">
+                                    <Canvas Width="24" Height="24">
+                                        <Path Data="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z">
+                                            <Path.Fill>
+                                                <SolidColorBrush Color="{StaticResource MainBackgroundColor}" />
+                                            </Path.Fill>
+                                        </Path>
+                                    </Canvas>
+                                </Viewbox>
+                            </Button>
+                        </Grid>
+                        <!--#endregion-->
 
-                    <!--#region  Button Menu  -->
-                    <Grid Height="55">
-                        <Grid.Background>
-                            <SolidColorBrush Color="{StaticResource FirstApplicationColor}" />
-                        </Grid.Background>
-                        <Button x:Name="ButtonCloseMenu" Width="40" Height="40"
-                                Style="{StaticResource MenuButton}"
-                                Background="{x:Null}" BorderBrush="{x:Null}"
-                                HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                Visibility="{Binding ButtonMenuCloseVisibility}"
-                                Margin="0 0 5 8"
-                                Command="{Binding ButtonMenuCloseClick}">
-                            <Viewbox Width="28" Height="28">
-                                <Canvas Width="24" Height="24">
-                                    <Path Data="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z">
-                                        <Path.Fill>
-                                            <SolidColorBrush Color="{StaticResource MainBackgroundColor}" />
-                                        </Path.Fill>
-                                    </Path>
-                                </Canvas>
-                            </Viewbox>
+                        <!--#region   Button Home  -->
+                        <Button x:Name="ButtonHome" 
+                            Style="{StaticResource ButtonMenuItem}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0">
+                                    <Viewbox Width="26" Height="26" 
+                                         Margin="5 0 5 0">
+                                        <Canvas Width="24" Height="24">
+                                            <Path Data="M9,19V13H11L13,13H15V19H18V10.91L12,4.91L6,10.91V19H9M12,2.09L21.91,12H20V21H13V15H11V21H4V12H2.09L12,2.09Z">
+                                                <Path.Fill>
+                                                    <SolidColorBrush Color="{StaticResource FirstApplicationColor}" />
+                                                </Path.Fill>
+                                            </Path>
+                                        </Canvas>
+                                    </Viewbox>
+                                    <TextBlock Text="Start" Style="{StaticResource TextBlockMenuItem}"/>
+                                </StackPanel>
+                            </Button.Content>
                         </Button>
-                        <Button x:Name="ButtonOpenMenu"  Width="40" Height="40"
-                                Style="{StaticResource MenuButton}"
-                                Background="{x:Null}" BorderBrush="{x:Null}"
-                                HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                                Visibility="{Binding ButtonMenuOpenVisibility}"
-                                Margin="0 0 5 8"
-                                Command="{Binding ButtonMenuOpenClick}">
-                            <Viewbox Width="28" Height="28">
-                                <Canvas Width="24" Height="24">
-                                    <Path Data="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z">
-                                        <Path.Fill>
-                                            <SolidColorBrush Color="{StaticResource MainBackgroundColor}" />
-                                        </Path.Fill>
-                                    </Path>
-                                </Canvas>
-                            </Viewbox>
-                        </Button>
-                    </Grid>
-                    <!--#endregion-->
+                        <!--#endregion-->
 
-                </StackPanel>
-
+                    </StackPanel>
+                    
+                </Grid>
             </Border>
             
         </Grid>
         <!--#endregion-->
-        
+
 
     </Grid>
 

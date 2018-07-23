@@ -6,6 +6,7 @@
     <Color x:Key="ThirdApplicationColor">#FF44FB00</Color>
     <Color x:Key="FourthApplicationColor">#FFFFD20A</Color>
     <Color x:Key="MainBackgroundColor">#FF2D2D30</Color>
+    <Color x:Key="MenuBackgroundColor">#2B4859</Color>
     
     <Color x:Key="BorderMainColor">#FF93999C</Color>
 
