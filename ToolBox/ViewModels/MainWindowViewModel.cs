@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -8,12 +9,15 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using ToolBox.Commands;
+using WPFLocalizeExtension.Engine;
+using WPFLocalizeExtension.Extensions;
 
 namespace ToolBox.ViewModels
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
         private string moduleName = "Module Name";
+
         private Visibility buttonMenuOpenVisibility = Visibility.Visible;
         private Visibility buttonMenuCloseVisibility = Visibility.Collapsed;
 
@@ -25,10 +29,9 @@ namespace ToolBox.ViewModels
             }
             set
             {
-                ModuleName = value;
+                moduleName = value;
             }
         }
-
 
         public Visibility ButtonMenuOpenVisibility
         {

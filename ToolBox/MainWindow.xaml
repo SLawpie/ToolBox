@@ -4,10 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModels="clr-namespace:ToolBox.ViewModels"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        lex:ResxLocalizationProvider.DefaultAssembly="ToolBox"
+        lex:ResxLocalizationProvider.DefaultDictionary="Translation"
         xmlns:local="clr-namespace:ToolBox"
         mc:Ignorable="d"
         Title="ToolBox" Height="600" Width="1100" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" WindowStyle="None"
-        MouseDown="WindowMouseDown"
+        MouseDown="WindowMouseDown" Loaded="Window_Loaded"
         >
     <Window.DataContext>
         <viewModels:MainWindowViewModel />
@@ -49,7 +52,7 @@
         <!--#region Header grid  -->
         <Grid x:Name="GridHeader" Grid.Row="0">
             <TextBlock x:Name="TextBlockModuleName"
-                           Text="{Binding ModuleName}" 
+                           Text="@DefaultModuleName"
                            Foreground="#ff7AC1FF" 
                            FontSize="24" 
                            FontFamily="Century Gothic" 
