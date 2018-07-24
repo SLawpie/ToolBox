@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using ToolBox.Commands;
+using ToolBox.Models;
 
 namespace ToolBox.ViewModels
 {
@@ -16,6 +17,13 @@ namespace ToolBox.ViewModels
         private string moduleName = "Module Name";
         private Visibility buttonMenuOpenVisibility = Visibility.Visible;
         private Visibility buttonMenuCloseVisibility = Visibility.Collapsed;
+
+        public MainWindowViewModel()
+        {
+            LoadResources();
+            SelectedLanguage = LanguageList.FirstOrDefault();
+            PreviousLanguage = SelectedLanguage;
+        }
 
         public string ModuleName
         {
@@ -101,5 +109,47 @@ namespace ToolBox.ViewModels
             //}
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        private Languages _selectedLanguage;
+        public Languages SelectedLanguage
+        {
+            get { return _selectedLanguage; }
+            set
+            {
+                _selectedLanguage = value;
+                NotifyPropertyChanged("SelectedLanguage");
+            }
+        }
+
+        private Languages _previousLanguage;
+        public Languages PreviousLanguage
+        {
+            get { return _previousLanguage; }
+            set
+            {
+                _previousLanguage = value;
+                NotifyPropertyChanged("PreviousLanguage");
+            }
+        }
+
+
+        private List<Languages> _languageList;
+        public List<Languages> LanguageList
+        {
+            get { return _languageList; }
+            set
+            {
+                _languageList = value;
+                NotifyPropertyChanged("LanguageList");
+            }
+        }
+
+        private void LoadResources()
+        {
+            LanguageList = new List<Languages>();
+            LanguageList.Add(new Languages() { Code = "en-US", Name = "EN" });
+            LanguageList.Add(new Languages() { Code = "pl-PL", Name = "PL" });
+        }
+
     }
 }

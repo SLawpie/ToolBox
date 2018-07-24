@@ -48,8 +48,11 @@
 
         <!--#region Header grid  -->
         <Grid x:Name="GridHeader" Grid.Row="0">
-            <TextBlock x:Name="TextBlockModuleName"
+            <!--
                            Text="{Binding ModuleName}" 
+            -->
+            <TextBlock x:Name="TextBlockModuleName"
+                           Text="{DynamicResource txtModuleName}" 
                            Foreground="#ff7AC1FF" 
                            FontSize="24" 
                            FontFamily="Century Gothic" 
@@ -91,9 +94,16 @@
                     <ComboBox x:Name="ComboBoxSelectLanguage" 
                                   SelectedIndex="0"
                                   Margin="0,0,0,0"
-                                  >
+                                  DisplayMemberPath="Name"
+                                  ItemsSource="{Binding LanguageList}"
+			                      SelectedItem="{Binding SelectedLanguage,
+                                        Mode=TwoWay}"
+			                      SelectionChanged="LanguageComboBox_SelectionChanged"    
+                              >
+                        <!--
                         <ComboBoxItem Content="EN" />
                         <ComboBoxItem Content="PL" />
+                        -->
                     </ComboBox>
                 </StackPanel>
 
