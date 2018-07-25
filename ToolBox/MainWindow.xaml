@@ -25,7 +25,7 @@
                 <ResourceDictionary Source="Styles\TextBlocks.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Window.Resources>
+     </Window.Resources>
   
     <Window.Background>
         <SolidColorBrush Color="{StaticResource MainBackgroundColor}" />
@@ -52,7 +52,7 @@
         <!--#region Header grid  -->
         <Grid x:Name="GridHeader" Grid.Row="0">
             <TextBlock x:Name="TextBlockModuleName"
-                           Text="@DefaultModuleName"
+                           Text="{lex:LocText Key=langDefaultModuleName}"
                            Foreground="#ff7AC1FF" 
                            FontSize="24" 
                            FontFamily="Century Gothic" 
@@ -92,15 +92,13 @@
                                 VerticalAlignment="Center" 
                                 HorizontalAlignment="Left">
                     <ComboBox x:Name="ComboBoxSelectLanguage" 
-                                  SelectedIndex="0"
-                                  Margin="0,0,0,0"
-                                  >
-                        <ComboBoxItem Content="EN" />
-                        <ComboBoxItem Content="PL" />
-                    </ComboBox>
-                </StackPanel>
-
-
+                              ItemsSource="{Binding Languages}"
+                              SelectedItem="{Binding SingleLanguage}"
+                              DisplayMemberPath="Code"
+                              SelectedIndex="1"
+                              Margin="0,0,0,0" />
+                 </StackPanel>
+               
             </Grid>
         </Border>
         <!--#endregion -->
@@ -181,7 +179,7 @@
                                             </Path>
                                         </Canvas>
                                     </Viewbox>
-                                    <TextBlock Text="Start" Style="{StaticResource TextBlockMenuItem}"/>
+                                    <TextBlock Text="{lex:LocText Key=langHome}" Style="{StaticResource TextBlockMenuItem}"/>
                                 </StackPanel>
                             </Button.Content>
                         </Button>

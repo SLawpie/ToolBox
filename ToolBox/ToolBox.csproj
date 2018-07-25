@@ -63,6 +63,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\SwitchCulture.cs" />
+    <Compile Include="Models\Language.cs" />
     <Compile Include="Resources\Localization\Translation.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

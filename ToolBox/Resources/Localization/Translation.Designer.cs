@@ -68,5 +68,14 @@ namespace ToolBox.Resources.Localization {
                 return ResourceManager.GetString("langDefaultModuleName", resourceCulture);
             }
         }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @Home.
+        /// </summary>
+        public static string langHome {
+            get {
+                return ResourceManager.GetString("langHome", resourceCulture);
+            }
+        }
     }
 }

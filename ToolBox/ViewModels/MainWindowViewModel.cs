@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using ToolBox.Commands;
 using WPFLocalizeExtension.Engine;
 using WPFLocalizeExtension.Extensions;
+using ToolBox.Models;
 
 namespace ToolBox.ViewModels
 {
@@ -20,6 +22,15 @@ namespace ToolBox.ViewModels
 
         private Visibility buttonMenuOpenVisibility = Visibility.Visible;
         private Visibility buttonMenuCloseVisibility = Visibility.Collapsed;
+
+        public MainWindowViewModel()
+        {
+            Languages = new ObservableCollection<Language>()
+            {
+                new Language(){Id=0, Code="EN", CultureCode="en-US", Name="English"},
+                new Language(){Id=1, Code="PL", CultureCode="pl=PL", Name="polski"}
+            };
+        }
 
         public string ModuleName
         {
@@ -103,6 +114,32 @@ namespace ToolBox.ViewModels
             //    PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             //}
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private ObservableCollection<Language> languages;
+
+        public ObservableCollection<Language> Languages
+        {
+            get { return languages; }
+            set
+            {
+                languages = value;
+                NotifyPropertyChanged();
+            }
+        }
+
+        private Language singleLanguage;
+
+        public Language SingleLanguage
+        {
+            get { return singleLanguage; }
+            set
+            {
+                singleLanguage = value;
+                NotifyPropertyChanged();
+                SwitchCulture culture = new SwitchCulture();
+                culture.Switch(singleLanguage.CultureCode, out string cultureName);
+            }
         }
     }
 }

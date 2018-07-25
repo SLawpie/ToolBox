@@ -45,8 +45,10 @@ namespace ToolBox
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             SwitchCulture culture = new SwitchCulture();
-            culture.Switch(CultureInfo.CurrentCulture.Name, out string cultureName);
-            //culture.Switch("en-US", out string cultureName);
+            //culture.Switch(CultureInfo.CurrentCulture.Name, out string cultureName);
+            culture.Switch("en-US", out string cultureName);
+            ComboBoxSelectLanguage.SelectedIndex = 0;
+            //culture.Switch("pl-PL", out string cultureName);
         }
     }
 }
