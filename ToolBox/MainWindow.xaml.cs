@@ -26,15 +26,7 @@ namespace ToolBox
         public MainWindow()
         {
             InitializeComponent();
-
-            InitialValues();
-            
-        }
-
-        public void InitialValues()
-        {
-            LocTextExtension localization = new LocTextExtension("langDefaultModuleName");
-            localization.SetBinding(TextBlockModuleName, TextBlock.TextProperty);
+           
         }
 
         public void WindowMouseDown(object sender, MouseButtonEventArgs e)

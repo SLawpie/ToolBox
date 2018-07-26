@@ -13,6 +13,7 @@ using ToolBox.Commands;
 using WPFLocalizeExtension.Engine;
 using WPFLocalizeExtension.Extensions;
 using ToolBox.Models;
+using ToolBox.Resources.Localization;
 
 namespace ToolBox.ViewModels
 {
@@ -30,6 +31,22 @@ namespace ToolBox.ViewModels
                 new Language(){Id=0, Code="EN", CultureCode="en-US", Name="English"},
                 new Language(){Id=1, Code="PL", CultureCode="pl=PL", Name="polski"}
             };
+
+            BindPropertyToResource(nameof(ModuleName), nameof(Translation.langDefaultModuleName));
+        }
+
+        protected void BindPropertyToResource(string propertyName, string resourceKey)
+        {
+            WPFLocalizeExtension.Providers.ResxLocalizationProvider resxLocalizationProvider
+                = WPFLocalizeExtension.Providers.ResxLocalizationProvider.Instance;
+
+            WPFLocalizeExtension.Providers.ResxLocalizationProvider.SetDefaultAssembly(resxLocalizationProvider, System.Reflection.Assembly.GetCallingAssembly().GetName().Name);
+            WPFLocalizeExtension.Providers.ResxLocalizationProvider.SetDefaultDictionary(resxLocalizationProvider, nameof(Translation));
+
+            var targetProperty = this.GetType().GetProperty(propertyName);
+            var locBinding = new WPFLocalizeExtension.Extensions.LocTextExtension(resourceKey);
+
+            locBinding.SetBinding(this, targetProperty);
         }
 
         public string ModuleName
@@ -41,6 +58,7 @@ namespace ToolBox.ViewModels
             set
             {
                 moduleName = value;
+                NotifyPropertyChanged();
             }
         }
 
@@ -94,6 +112,14 @@ namespace ToolBox.ViewModels
             }
         }
 
+        public ICommand ButtonFiltrationAreaClick
+        {
+            get
+            {
+                return new RelayCommand(ButtonFiltrationAreaExecute);
+            }
+        }
+
         private void ButtonMenuOpenExecute()
         {
             ButtonMenuCloseVisibility = Visibility.Visible;
@@ -104,6 +130,11 @@ namespace ToolBox.ViewModels
         {
             ButtonMenuCloseVisibility = Visibility.Collapsed;
             ButtonMenuOpenVisibility = Visibility.Visible;
+        }
+
+        private void ButtonFiltrationAreaExecute()
+        {
+            BindPropertyToResource(nameof(ModuleName), nameof(Translation.langFiltrationArea));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -136,7 +167,8 @@ namespace ToolBox.ViewModels
             set
             {
                 singleLanguage = value;
-                NotifyPropertyChanged();
+                NotifyPropertyChanged("ModuleName");
+                
                 SwitchCulture culture = new SwitchCulture();
                 culture.Switch(singleLanguage.CultureCode, out string cultureName);
             }

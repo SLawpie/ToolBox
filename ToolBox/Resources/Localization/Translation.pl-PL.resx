@@ -120,6 +120,9 @@
   <data name="langDefaultModuleName" xml:space="preserve">
     <value>Nazwa modułu</value>
   </data>
+  <data name="langFiltrationArea" xml:space="preserve">
+    <value>Powierzchnia filtracyjna</value>
+  </data>
   <data name="langHome" xml:space="preserve">
     <value>Start</value>
   </data>

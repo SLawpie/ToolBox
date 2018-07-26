@@ -51,8 +51,8 @@
 
         <!--#region Header grid  -->
         <Grid x:Name="GridHeader" Grid.Row="0">
-            <TextBlock x:Name="TextBlockModuleName"
-                           Text="{lex:LocText Key=langDefaultModuleName}"
+            <TextBlock Name="TextBlockModuleName"
+                           Text="{Binding ModuleName}"
                            Foreground="#ff7AC1FF" 
                            FontSize="24" 
                            FontFamily="Century Gothic" 
@@ -184,6 +184,29 @@
                             </Button.Content>
                         </Button>
                         <!--#endregion-->
+
+                        <!--#region   Button Filtration Area  -->
+                        <Button x:Name="ButtonFiltrationArea" 
+                                Style="{StaticResource ButtonMenuItem}"
+                                Command="{Binding ButtonFiltrationAreaClick}">
+                            <Button.Content>
+                                <StackPanel Orientation="Horizontal" Margin="5 0 0 0">
+                                    <Viewbox Width="26" Height="26"
+                                             Margin="5 0 5 0">
+                                        <Canvas Width="24" Height="24">
+                                            <Path Data="M3,22V8H7V22H3M10,22V2H14V22H10M17,22V14H21V22H17Z">
+                                                <Path.Fill>
+                                                    <SolidColorBrush Color="{StaticResource FirstApplicationColor}" />
+                                                </Path.Fill>
+                                            </Path>
+                                        </Canvas>
+                                    </Viewbox>
+                                    <TextBlock Text="{lex:LocText Key=langFiltrationArea}" Style="{StaticResource TextBlockMenuItem}"/>
+                                </StackPanel>
+                            </Button.Content>
+                        </Button>
+                        <!--#endregion-->
+
 
                     </StackPanel>
                     

@@ -70,6 +70,15 @@ namespace ToolBox.Resources.Localization {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @FiltrationArea.
+        /// </summary>
+        public static string langFiltrationArea {
+            get {
+                return ResourceManager.GetString("langFiltrationArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu @Home.
         /// </summary>
         public static string langHome {
