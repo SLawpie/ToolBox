@@ -41,6 +41,17 @@ namespace ToolBox
             culture.Switch("en-US", out string cultureName);
             ComboBoxSelectLanguage.SelectedIndex = 0;
             //culture.Switch("pl-PL", out string cultureName);
+            //ContentPage.Navigate(new System.Uri("pack://application:,,,/ToolBox;component/Pages/FiltrationArea.xaml", UriKind.Absolute));
+        }
+
+        private void ButtonMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            if (GridMenu.Width == 250)
+            {
+                ButtonCloseMenu.Visibility = Visibility.Collapsed;
+                ButtonOpenMenu.Visibility = Visibility.Visible;
+                ButtonCloseMenu.RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
+            }
         }
     }
 }

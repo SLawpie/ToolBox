@@ -14,6 +14,7 @@ using WPFLocalizeExtension.Engine;
 using WPFLocalizeExtension.Extensions;
 using ToolBox.Models;
 using ToolBox.Resources.Localization;
+using System.Windows.Controls;
 
 namespace ToolBox.ViewModels
 {
@@ -59,6 +60,26 @@ namespace ToolBox.ViewModels
             {
                 moduleName = value;
                 NotifyPropertyChanged();
+            }
+        }
+
+        private Uri displayPage;
+
+        public Uri  DisplayPage
+        {
+            get
+            {
+                return displayPage;
+            }
+            set
+            {
+                if (Equals(displayPage, value))
+                {
+                    return;
+                }
+
+                this.displayPage = value;
+                NotifyPropertyChanged("DisplayPage");
             }
         }
 
@@ -120,6 +141,14 @@ namespace ToolBox.ViewModels
             }
         }
 
+        public ICommand ButtonHomeClick
+        {
+            get
+            {
+                return new RelayCommand(ButtonHomeClickExecute);
+            }
+        }
+
         private void ButtonMenuOpenExecute()
         {
             ButtonMenuCloseVisibility = Visibility.Visible;
@@ -135,6 +164,13 @@ namespace ToolBox.ViewModels
         private void ButtonFiltrationAreaExecute()
         {
             BindPropertyToResource(nameof(ModuleName), nameof(Translation.langFiltrationArea));
+            DisplayPage = new Uri(@"Pages\FiltrationArea.xaml", UriKind.RelativeOrAbsolute);
+        }
+
+        private void ButtonHomeClickExecute()
+        {
+            BindPropertyToResource(nameof(ModuleName), nameof(Translation.langDefaultModuleName));
+            DisplayPage = new Uri(@"Pages\Home.xaml", UriKind.RelativeOrAbsolute);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

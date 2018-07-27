@@ -68,8 +68,13 @@
         <!--#endregion-->
 
         <!--#region   Main frame  -->
-        <Frame Grid.Row="1" x:Name="ContentPage" Margin="60 10 10 10" NavigationUIVisibility="Hidden">
-
+        <Frame Grid.Row="1" x:Name="ContentPage" 
+               Margin="60 10 10 10" 
+               NavigationUIVisibility="Hidden"
+               Source="{Binding DisplayPage}"
+               
+               >
+            
         </Frame>
         <!--#endregion-->
 
@@ -166,7 +171,9 @@
 
                         <!--#region   Button Home  -->
                         <Button x:Name="ButtonHome" 
-                            Style="{StaticResource ButtonMenuItem}">
+                            Style="{StaticResource ButtonMenuItem}"
+                                Command="{Binding ButtonHomeClick}"
+                                Click="ButtonMenuItem_Click">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal" Margin="5 0 0 0">
                                     <Viewbox Width="26" Height="26" 
@@ -188,7 +195,8 @@
                         <!--#region   Button Filtration Area  -->
                         <Button x:Name="ButtonFiltrationArea" 
                                 Style="{StaticResource ButtonMenuItem}"
-                                Command="{Binding ButtonFiltrationAreaClick}">
+                                Command="{Binding ButtonFiltrationAreaClick}"
+                                Click="ButtonMenuItem_Click">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal" Margin="5 0 0 0">
                                     <Viewbox Width="26" Height="26"
