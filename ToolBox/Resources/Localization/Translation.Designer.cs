@@ -61,6 +61,24 @@ namespace ToolBox.Resources.Localization {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @BagDiameter.
+        /// </summary>
+        public static string langBagDiameter {
+            get {
+                return ResourceManager.GetString("langBagDiameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @CollectorEfficiency.
+        /// </summary>
+        public static string langCollectorEfficiency {
+            get {
+                return ResourceManager.GetString("langCollectorEfficiency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu @DefaultModuleName.
         /// </summary>
         public static string langDefaultModuleName {
@@ -84,6 +102,24 @@ namespace ToolBox.Resources.Localization {
         public static string langHome {
             get {
                 return ResourceManager.GetString("langHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @NumberOfFilters.
+        /// </summary>
+        public static string langNumberOfFilters {
+            get {
+                return ResourceManager.GetString("langNumberOfFilters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @Permeability.
+        /// </summary>
+        public static string langPermeability {
+            get {
+                return ResourceManager.GetString("langPermeability", resourceCulture);
             }
         }
     }

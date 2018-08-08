@@ -33,7 +33,8 @@ namespace ToolBox.ViewModels
                 new Language(){Id=1, Code="PL", CultureCode="pl=PL", Name="polski"}
             };
 
-            BindPropertyToResource(nameof(ModuleName), nameof(Translation.langDefaultModuleName));
+            //BindPropertyToResource(nameof(ModuleName), nameof(Translation.langDefaultModuleName));
+            BindPropertyToResource(nameof(ModuleName), nameof(Translation.langFiltrationArea));
         }
 
         protected void BindPropertyToResource(string propertyName, string resourceKey)

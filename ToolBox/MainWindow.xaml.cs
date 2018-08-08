@@ -14,7 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ToolBox.Commands;
+using ToolBox.Converters;
 using WPFLocalizeExtension.Extensions;
+using ToolBox.ViewModels;
 
 namespace ToolBox
 {
@@ -41,7 +43,9 @@ namespace ToolBox
             culture.Switch("en-US", out string cultureName);
             ComboBoxSelectLanguage.SelectedIndex = 0;
             //culture.Switch("pl-PL", out string cultureName);
-            //ContentPage.Navigate(new System.Uri("pack://application:,,,/ToolBox;component/Pages/FiltrationArea.xaml", UriKind.Absolute));
+            
+            ContentPage.Navigate(new System.Uri("pack://application:,,,/ToolBox;component/Pages/FiltrationArea.xaml", UriKind.Absolute));
+
         }
 
         private void ButtonMenuItem_Click(object sender, RoutedEventArgs e)

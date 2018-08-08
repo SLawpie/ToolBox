@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:lex="http://wpflocalizeextension.codeplex.com"
+             lex:ResxLocalizationProvider.DefaultAssembly="ToolBox"
+             lex:ResxLocalizationProvider.DefaultDictionary="Translation"
              xmlns:local="clr-namespace:ToolBox.Pages"
+             xmlns:viewModels="clr-namespace:ToolBox.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -11,16 +15,97 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="..\Styles\Colors.xaml" />
+                <ResourceDictionary Source="..\Styles\StylesFiltrationArea.xaml" />
             </ResourceDictionary.MergedDictionaries>
+
+            <viewModels:FiltrationAreaViewModel x:Key="ViewModel"/>
+
         </ResourceDictionary>
     </UserControl.Resources>
 
 
-    <Grid>
-        <TextBlock Text="Średnica filtra:" FontFamily="Century Gothic" FontSize="20" FontStyle="Italic" Margin="0,25,0,0" >
-            <TextBlock.Foreground>
-                <SolidColorBrush Color="{StaticResource SecondApplicationColor}" />
-            </TextBlock.Foreground>
-        </TextBlock>
+    <Grid DataContext="{StaticResource ViewModel}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <!--#region  Left panel  -->
+        
+        <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,5,0">
+            <TextBlock Text="{lex:LocText Key=langBagDiameter}" FontFamily="Century Gothic" FontSize="20" FontStyle="Italic" Margin="0,25,0,0" >
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{StaticResource SecondApplicationColor}" />
+                </TextBlock.Foreground>
+            </TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <TextBox x:Name="TbFilterDiameter" 
+                         Text="{Binding FilterDiameter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         FontSize="24" Margin="0 0 0 0" Foreground="#FF44FB00" 
+                         FontFamily="Century Gothic" 
+                         VerticalAlignment="Bottom" 
+                         />
+                <TextBlock Text="mm" FontSize="18" Margin="10 0 10 0" Foreground="#FF44FB00" FontFamily="Century Gothic" VerticalAlignment="Bottom" />
+            </StackPanel>
+
+            <TextBlock Text="{lex:LocText Key=langPermeability}" FontFamily="Century Gothic" FontSize="20" FontStyle="Italic" Margin="0,25,0,0" >
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{StaticResource SecondApplicationColor}" />
+                </TextBlock.Foreground>
+            </TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <TextBox x:Name="TbFilterFactor" 
+                         Text="{Binding FilterFactor}"
+                         FontSize="24" Margin="0 0 0 0" Foreground="#FF44FB00" 
+                         FontFamily="Century Gothic" 
+                         VerticalAlignment="Center" 
+                         />
+                <StackPanel>
+                    <TextBlock Text="m³/h" FontSize="16" Margin="10 0 10 0" Foreground="#FF44FB00" FontFamily="Century Gothic" VerticalAlignment="Bottom" />
+                    <Line
+                        X1="10" Y1="0"
+                        X2="50" Y2="0"
+                        Stroke="#FF44FB00"
+                        StrokeThickness="2" />
+                    <TextBlock Text="m²" FontSize="16" Margin="10 0 10 0" Foreground="#FF44FB00" FontFamily="Century Gothic" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock Text="{lex:LocText Key=langNumberOfFilters}" FontFamily="Century Gothic" FontSize="20" FontStyle="Italic" Margin="0,25,0,0" >
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{StaticResource SecondApplicationColor}" />
+                </TextBlock.Foreground>
+            </TextBlock>
+            <TextBox 
+                x:Name="TbNumberOfFilters"
+                Text="{Binding NumberOfFilters}" 
+                FontSize="24" Margin="0 0 10 0" Foreground="#FF44FB00" 
+                FontFamily="Century Gothic" 
+                HorizontalAlignment="Right" 
+                />
+
+            <TextBlock Text="{lex:LocText Key=langCollectorEfficiency}" FontFamily="Century Gothic" FontSize="20" FontStyle="Italic" Margin="0,25,0,0">
+                <TextBlock.Foreground>
+                    <SolidColorBrush Color="{StaticResource SecondApplicationColor}" />
+                </TextBlock.Foreground>
+            </TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <TextBox 
+                    x:Name="TbTotalEfficiency"
+                    Text="{Binding TotalEfficiency, StringFormat=\{0:# 000\}}" 
+                    FontSize="24" Margin="0 0 0 0" Foreground="#FFFFD20A" 
+                    FontFamily="Century Gothic"
+                    VerticalAlignment="Bottom" 
+                    />
+                <TextBlock Text="m³/h" FontSize="18" Margin="10 0 10 0" Foreground="#FFFFD20A" FontFamily="Century Gothic" VerticalAlignment="Bottom" />
+            </StackPanel>
+            
+        </StackPanel>
+        <!--#endregion-->
+
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="{Binding Aqq}" Name="Aqq" Foreground="#FFFF0505" FontSize="36" />
+        </StackPanel>
+     
     </Grid>
 </UserControl>
