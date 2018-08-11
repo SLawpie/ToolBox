@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ToolBox.Models;
 using System.Runtime.CompilerServices;
 using ToolBox.Converters;
+using System.Collections.ObjectModel;
 
 namespace ToolBox.ViewModels
 {
@@ -28,35 +29,27 @@ namespace ToolBox.ViewModels
             numberOfFilters = initialValues[2, 1];
             totalEfficiency = initialValues[3, 1];
 
-            aqq = String.Format("{0} - {1} - {2} - {3}", filterDiameter, filterFactor, numberOfFilters, totalEfficiency);
-            filters = new List<Filter>();
+            filters = new ObservableCollection<Filter>();
 
-            Filters.Clear();
+            filters.Clear();
             MakeFiltersList();
+
         }
 
-        private string aqq;
-        public string Aqq
+        private ObservableCollection<Filter> filters;
+        public ObservableCollection<Filter> Filters
         {
             get
             {
-                // return aqq;
-                return aqq = String.Format("{0} - {1} - {2} - {3}", filterDiameter, filterFactor, numberOfFilters, totalEfficiency);
+                filters.Clear();
+                MakeFiltersList();
+                return filters;
             }
             set
             {
-                aqq = value;
+                filters = value;
                 NotifyPropertyChanged();
             }
-        }
-
-
-
-        private List<Filter> filters;
-        public List<Filter> Filters
-        {
-            get { return filters; }
-            set { filters = value; }
         }
 
         private string filterDiameter;
@@ -66,7 +59,7 @@ namespace ToolBox.ViewModels
             set
             { 
                 filterDiameter = value;
-                NotifyPropertyChanged("Aqq");
+                NotifyPropertyChanged("Filters");
                 NotifyPropertyChanged();
             }
         }
@@ -78,7 +71,7 @@ namespace ToolBox.ViewModels
             set
             {
                 filterFactor = value;
-                NotifyPropertyChanged("Aqq");
+                NotifyPropertyChanged("Filters");
                 NotifyPropertyChanged();
             }
         }
@@ -90,7 +83,7 @@ namespace ToolBox.ViewModels
             set
             {
                 numberOfFilters = value;
-                NotifyPropertyChanged("Aqq");
+                NotifyPropertyChanged("Filters");
                 NotifyPropertyChanged();
             }
         }
@@ -102,16 +95,16 @@ namespace ToolBox.ViewModels
             set
             {
                 totalEfficiency = value;
-                NotifyPropertyChanged("Aqq");
+                NotifyPropertyChanged("Filters");
                 NotifyPropertyChanged();
             }
         }
 
         private void MakeFiltersList()
         {
-            for (int i = 1000; i <= 3000; i += 100)
+            for (int i = 3000; i >= 1000; i -= 100)
             {
-                Filters.Add(new Filter(
+                filters.Add(new Filter(
                     i, 
                     Convert.ToInt32(filterDiameter), 
                     Convert.ToInt32(filterFactor),

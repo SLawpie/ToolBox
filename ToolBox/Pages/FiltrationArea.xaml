@@ -8,6 +8,7 @@
              lex:ResxLocalizationProvider.DefaultDictionary="Translation"
              xmlns:local="clr-namespace:ToolBox.Pages"
              xmlns:viewModels="clr-namespace:ToolBox.ViewModels"
+             xmlns:convs="clr-namespace:ToolBox.Converters"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
@@ -19,6 +20,7 @@
             </ResourceDictionary.MergedDictionaries>
 
             <viewModels:FiltrationAreaViewModel x:Key="ViewModel"/>
+            <convs:WidthConverter x:Key="WidthConverter"/>
 
         </ResourceDictionary>
     </UserControl.Resources>
@@ -33,11 +35,11 @@
         <!--#region  Left panel  -->
         
         <StackPanel Grid.Column="0" Orientation="Vertical" Margin="0,0,5,0">
-            <TextBlock Text="{lex:LocText Key=langBagDiameter}" FontSize="20" FontStyle="Italic" Margin="0,25,0,0" >
-                <TextBlock.Foreground>
-                    <SolidColorBrush Color="{StaticResource SecondApplicationColor}" />
-                </TextBlock.Foreground>
-            </TextBlock>
+            <TextBlock ToolTip="{lex:LocText Key=langToolTip11}"
+                       Text="{lex:LocText Key=langBagDiameter}" 
+                       FontSize="20" 
+                       FontStyle="Italic" 
+                       Margin="0,25,0,0" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <TextBox 
                     Style="{StaticResource IsDigitOnly}"
@@ -46,14 +48,19 @@
                     Margin="0 0 0 0" 
                     VerticalAlignment="Bottom"
                     />
-                <TextBlock Text="mm" FontSize="18" Margin="10 0 10 0" VerticalAlignment="Bottom" />
+                <TextBlock Text="mm" FontSize="18" Margin="10 0 10 0" VerticalAlignment="Bottom">
+                    <TextBlock.Foreground>
+                        <SolidColorBrush Color="{StaticResource ThirdApplicationColor}" />
+                    </TextBlock.Foreground>
+                </TextBlock>
             </StackPanel>
 
-            <TextBlock Text="{lex:LocText Key=langPermeability}" FontSize="20" FontStyle="Italic" Margin="0,25,0,0" >
-                <TextBlock.Foreground>
-                    <SolidColorBrush Color="{StaticResource SecondApplicationColor}" />
-                </TextBlock.Foreground>
-            </TextBlock>
+            <TextBlock 
+                ToolTip="{lex:LocText Key=langToolTip12}"
+                Text="{lex:LocText Key=langPermeability}" 
+                FontSize="20" 
+                FontStyle="Italic" 
+                Margin="0,25,0,0" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <TextBox Style="{StaticResource IsDigitOnly}"
                          x:Name="TbFilterFactor" 
@@ -62,21 +69,31 @@
                          VerticalAlignment="Center" 
                          />
                 <StackPanel>
-                    <TextBlock Text="m³/h" FontSize="16" Margin="10 0 10 0" VerticalAlignment="Bottom" />
+                    <TextBlock Text="m³/h" FontSize="16" Margin="10 0 10 0" VerticalAlignment="Bottom">
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource ThirdApplicationColor}" />
+                        </TextBlock.Foreground>
+                    </TextBlock>
                     <Line
                         X1="10" Y1="0"
                         X2="50" Y2="0"
                         Stroke="#FF44FB00"
                         StrokeThickness="2" />
-                    <TextBlock Text="m²" FontSize="16" Margin="10 0 10 0" VerticalAlignment="Bottom" HorizontalAlignment="Center" />
+                    <TextBlock Text="m²" FontSize="16" Margin="10 0 10 0" VerticalAlignment="Bottom" HorizontalAlignment="Center" >
+                        <TextBlock.Foreground>
+                            <SolidColorBrush Color="{StaticResource ThirdApplicationColor}" />
+                        </TextBlock.Foreground>
+                    </TextBlock>
                 </StackPanel>
             </StackPanel>
 
-            <TextBlock Text="{lex:LocText Key=langNumberOfFilters}" FontFamily="Century Gothic" FontSize="20" FontStyle="Italic" Margin="0,25,0,0" >
-                <TextBlock.Foreground>
-                    <SolidColorBrush Color="{StaticResource SecondApplicationColor}" />
-                </TextBlock.Foreground>
-            </TextBlock>
+            <TextBlock 
+                ToolTip="{lex:LocText Key=langToolTip13}"
+                Text="{lex:LocText Key=langNumberOfFilters}" 
+                FontFamily="Century Gothic" 
+                FontSize="20" 
+                FontStyle="Italic" 
+                Margin="0,25,0,0" />
             <TextBox 
                 Style="{StaticResource IsDigitOnly}"
                 x:Name="TbNumberOfFilters"
@@ -84,11 +101,13 @@
                 Margin="0 0 10 0" HorizontalAlignment="Right" 
                 />
 
-            <TextBlock Text="{lex:LocText Key=langCollectorEfficiency}" FontFamily="Century Gothic" FontSize="20" FontStyle="Italic" Margin="0,25,0,0">
-                <TextBlock.Foreground>
-                    <SolidColorBrush Color="{StaticResource SecondApplicationColor}" />
-                </TextBlock.Foreground>
-            </TextBlock>
+            <TextBlock 
+                ToolTip="{lex:LocText Key=langToolTip14}"
+                Text="{lex:LocText Key=langCollectorEfficiency}" 
+                FontFamily="Century Gothic" 
+                FontSize="20" 
+                FontStyle="Italic" 
+                Margin="0,25,0,0" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                 <TextBox 
                     Style="{StaticResource IsDigitOnly}"
@@ -111,9 +130,151 @@
         </StackPanel>
         <!--#endregion-->
 
-        <StackPanel Grid.Column="1">
-            <TextBlock Text="{Binding Aqq}" Name="Aqq" Foreground="#FFFF0505" FontSize="36" />
-        </StackPanel>
-     
+       
+        <!--#region  ListView -->
+        <ListView x:Name="MainListView"
+                  Grid.Column="1" 
+                  ItemsSource="{Binding Filters, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                  Margin="0 1 0 -1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Width="{Binding ElementName=MainListView, Path=ActualWidth, Converter={StaticResource WidthConverter}, ConverterParameter=6}">
+                            <GridViewColumn.Header>
+                                <StackPanel ToolTip="{lex:LocText Key=langToolTip01}">
+                                    <TextBlock Text="{lex:LocText Key=langLength}" TextAlignment="Center"/>
+                                    <TextBlock FontSize="14" TextAlignment="Center"
+                                               Text="[mm]"/>
+                                </StackPanel>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Length}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="{Binding ElementName=MainListView, Path=ActualWidth, Converter={StaticResource WidthConverter}, ConverterParameter=6}">
+                            <GridViewColumn.Header>
+                                <StackPanel ToolTip="{lex:LocText Key=langToolTip02}">
+                                    <TextBlock TextAlignment="Center" 
+                                           Text="{lex:LocText Key=langFilterArea}" />
+                                    <TextBlock TextAlignment="Center" 
+                                           FontSize="14"
+                                           Text="[m²]" />
+                                </StackPanel>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Area, StringFormat={}{0:#0.000}}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="{Binding ElementName=MainListView, Path=ActualWidth, Converter={StaticResource WidthConverter}, ConverterParameter=6}">
+                            <GridViewColumn.Header>
+                                <StackPanel ToolTip="{lex:LocText Key=langToolTip03}">
+                                    <TextBlock TextAlignment="Center" 
+                                           Text="{lex:LocText Key=langTotalArea}" />
+                                    <TextBlock TextAlignment="Center" 
+                                           FontSize="14"
+                                           Text="[m²]" />
+                                </StackPanel>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TotalArea, StringFormat={}{0:#0.00}}" >
+                                        <TextBlock.Foreground>
+                                            <SolidColorBrush Color="{StaticResource FirstApplicationColor}" />
+                                        </TextBlock.Foreground>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="{Binding ElementName=MainListView, Path=ActualWidth, Converter={StaticResource WidthConverter}, ConverterParameter=6}">
+                            <GridViewColumn.Header>
+                                <StackPanel  ToolTip="{lex:LocText Key=langToolTip04}">
+                                    <TextBlock TextAlignment="Center" 
+                                           Text="{lex:LocText Key=langTotalEfficiency}" />
+                                    <TextBlock TextAlignment="Center" 
+                                           FontSize="14"
+                                           Text="[m³/h]" />
+                                </StackPanel>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TotalEfficiency, StringFormat={}{0:0}}">
+                                        <TextBlock.Foreground>
+                                            <SolidColorBrush Color="{StaticResource FourthApplicationColor}" />
+                                        </TextBlock.Foreground>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="{Binding ElementName=MainListView, Path=ActualWidth, Converter={StaticResource WidthConverter}, ConverterParameter=6}">
+                            <GridViewColumn.Header>
+                                <StackPanel>
+                                    <StackPanel.ToolTip>
+                                        <StackPanel>
+                                            <TextBlock Text="{lex:LocText Key=langToolTip05_1}">
+                                            <TextBlock.Foreground>
+                                                <SolidColorBrush Color="{StaticResource ThirdApplicationColor}" />
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
+                                        <TextBlock Text="{lex:LocText Key=langToolTip05_2}">
+                                            <TextBlock.Foreground>
+                                                <SolidColorBrush Color="{StaticResource ThirdApplicationColor}" />
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    </StackPanel.ToolTip>
+                                    <TextBlock TextAlignment="Center" 
+                                           Text="{lex:LocText Key=langPermeability2}" />
+                                    <TextBlock TextAlignment="Center" 
+                                           FontSize="14"
+                                           Text="[m³/m²/h]" />
+                                </StackPanel>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding FilterFactor, StringFormat={}{0:0}}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Width="{Binding ElementName=MainListView, Path=ActualWidth, Converter={StaticResource WidthConverter}, ConverterParameter=6}">
+                            <GridViewColumn.Header>
+                                <StackPanel>
+                                    <StackPanel.ToolTip>
+                                        <StackPanel>
+                                        <TextBlock Text="{lex:LocText Key=langToolTip06_1}">
+                                            <TextBlock.Foreground>
+                                                <SolidColorBrush Color="{StaticResource ThirdApplicationColor}" />
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
+                                        <TextBlock Text="{lex:LocText Key=langToolTip06_2}" >
+                                            <TextBlock.Foreground>
+                                                <SolidColorBrush Color="{StaticResource ThirdApplicationColor}" />
+                                            </TextBlock.Foreground>
+                                        </TextBlock>
+                                    </StackPanel>
+                                    </StackPanel.ToolTip>
+                                    <TextBlock TextAlignment="Center" 
+                                           Text="{lex:LocText Key=langQuantity}" />
+                                    <TextBlock TextAlignment="Center" 
+                                           FontSize="14"
+                                           Text="" />
+                                </StackPanel>
+                            </GridViewColumn.Header>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding RequiredNumberOfFilters, StringFormat={}{0:0}}">
+                                        <TextBlock.Foreground>
+                                            <SolidColorBrush Color="{StaticResource ThirdApplicationColor}" />
+                                        </TextBlock.Foreground>
+                                    </TextBlock>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+        </ListView>
+        <!--#endregion-->
     </Grid>
 </UserControl>

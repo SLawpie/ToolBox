@@ -126,16 +126,70 @@
   <data name="langDefaultModuleName" xml:space="preserve">
     <value>@DefaultModuleName</value>
   </data>
+  <data name="langFilterArea" xml:space="preserve">
+    <value>@FilterArea</value>
+  </data>
   <data name="langFiltrationArea" xml:space="preserve">
     <value>@FiltrationArea</value>
   </data>
   <data name="langHome" xml:space="preserve">
     <value>@Home</value>
   </data>
+  <data name="langLength" xml:space="preserve">
+    <value>@Length</value>
+  </data>
   <data name="langNumberOfFilters" xml:space="preserve">
     <value>@NumberOfFilters</value>
   </data>
   <data name="langPermeability" xml:space="preserve">
     <value>@Permeability</value>
+  </data>
+  <data name="langPermeability2" xml:space="preserve">
+    <value>@Permeability</value>
+  </data>
+  <data name="langQuantity" xml:space="preserve">
+    <value>@Qauntity</value>
+  </data>
+  <data name="langToolTip01" xml:space="preserve">
+    <value>@ToolTip_01</value>
+  </data>
+  <data name="langToolTip02" xml:space="preserve">
+    <value>@ToolTip_02</value>
+  </data>
+  <data name="langToolTip03" xml:space="preserve">
+    <value>@ToolTip_03</value>
+  </data>
+  <data name="langToolTip04" xml:space="preserve">
+    <value>@ToolTip_04</value>
+  </data>
+  <data name="langToolTip05_1" xml:space="preserve">
+    <value>@ToolTip_05_1</value>
+  </data>
+  <data name="langToolTip05_2" xml:space="preserve">
+    <value>@ToolTip_05_2</value>
+  </data>
+  <data name="langToolTip06_1" xml:space="preserve">
+    <value>@ToolTip_06_1</value>
+  </data>
+  <data name="langToolTip06_2" xml:space="preserve">
+    <value>@ToolTip_06_2</value>
+  </data>
+  <data name="langToolTip11" xml:space="preserve">
+    <value>@ToolTip_11</value>
+  </data>
+  <data name="langToolTip12" xml:space="preserve">
+    <value>@ToolTip_12</value>
+  </data>
+  <data name="langToolTip13" xml:space="preserve">
+    <value>@ToolTip_13</value>
+  </data>
+  <data name="langToolTip14" xml:space="preserve">
+    <value>@ToolTip_14</value>
+  </data>
+  <data name="langTotalArea" xml:space="preserve">
+    <value>@TotalArea</value>
+  </data>
+  <data name="langTotalEfficiency" xml:space="preserve">
+    <value>@TotalEfficiency</value>
   </data>
 </root>

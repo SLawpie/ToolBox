@@ -88,6 +88,15 @@ namespace ToolBox.Resources.Localization {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @FilterArea.
+        /// </summary>
+        public static string langFilterArea {
+            get {
+                return ResourceManager.GetString("langFilterArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu @FiltrationArea.
         /// </summary>
         public static string langFiltrationArea {
@@ -106,6 +115,15 @@ namespace ToolBox.Resources.Localization {
         }
         
         /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @Length.
+        /// </summary>
+        public static string langLength {
+            get {
+                return ResourceManager.GetString("langLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         /// Wyszukuje zlokalizowany ciąg podobny do ciągu @NumberOfFilters.
         /// </summary>
         public static string langNumberOfFilters {
@@ -120,6 +138,150 @@ namespace ToolBox.Resources.Localization {
         public static string langPermeability {
             get {
                 return ResourceManager.GetString("langPermeability", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @Permeability.
+        /// </summary>
+        public static string langPermeability2 {
+            get {
+                return ResourceManager.GetString("langPermeability2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @Qauntity.
+        /// </summary>
+        public static string langQuantity {
+            get {
+                return ResourceManager.GetString("langQuantity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @ToolTip_01.
+        /// </summary>
+        public static string langToolTip01 {
+            get {
+                return ResourceManager.GetString("langToolTip01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @ToolTip_02.
+        /// </summary>
+        public static string langToolTip02 {
+            get {
+                return ResourceManager.GetString("langToolTip02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @ToolTip_03.
+        /// </summary>
+        public static string langToolTip03 {
+            get {
+                return ResourceManager.GetString("langToolTip03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @ToolTip_04.
+        /// </summary>
+        public static string langToolTip04 {
+            get {
+                return ResourceManager.GetString("langToolTip04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @ToolTip_05_1.
+        /// </summary>
+        public static string langToolTip05_1 {
+            get {
+                return ResourceManager.GetString("langToolTip05_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @ToolTip_05_2.
+        /// </summary>
+        public static string langToolTip05_2 {
+            get {
+                return ResourceManager.GetString("langToolTip05_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @ToolTip_06_1.
+        /// </summary>
+        public static string langToolTip06_1 {
+            get {
+                return ResourceManager.GetString("langToolTip06_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @ToolTip_06_2.
+        /// </summary>
+        public static string langToolTip06_2 {
+            get {
+                return ResourceManager.GetString("langToolTip06_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @ToolTip_11.
+        /// </summary>
+        public static string langToolTip11 {
+            get {
+                return ResourceManager.GetString("langToolTip11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @ToolTip_12.
+        /// </summary>
+        public static string langToolTip12 {
+            get {
+                return ResourceManager.GetString("langToolTip12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @ToolTip_13.
+        /// </summary>
+        public static string langToolTip13 {
+            get {
+                return ResourceManager.GetString("langToolTip13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @ToolTip_14.
+        /// </summary>
+        public static string langToolTip14 {
+            get {
+                return ResourceManager.GetString("langToolTip14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @TotalArea.
+        /// </summary>
+        public static string langTotalArea {
+            get {
+                return ResourceManager.GetString("langTotalArea", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu @TotalEfficiency.
+        /// </summary>
+        public static string langTotalEfficiency {
+            get {
+                return ResourceManager.GetString("langTotalEfficiency", resourceCulture);
             }
         }
     }

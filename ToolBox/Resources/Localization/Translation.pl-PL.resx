@@ -126,16 +126,70 @@
   <data name="langDefaultModuleName" xml:space="preserve">
     <value />
   </data>
+  <data name="langFilterArea" xml:space="preserve">
+    <value>Pow.filtra</value>
+  </data>
   <data name="langFiltrationArea" xml:space="preserve">
     <value>Powierzchnia filtracyjna</value>
   </data>
   <data name="langHome" xml:space="preserve">
     <value>Start</value>
   </data>
+  <data name="langLength" xml:space="preserve">
+    <value>Długość</value>
+  </data>
   <data name="langNumberOfFilters" xml:space="preserve">
     <value>Ilość filtrów:</value>
   </data>
   <data name="langPermeability" xml:space="preserve">
     <value>Przepuszczalność:</value>
+  </data>
+  <data name="langPermeability2" xml:space="preserve">
+    <value>Przelicznik</value>
+  </data>
+  <data name="langQuantity" xml:space="preserve">
+    <value>Il. filtrów</value>
+  </data>
+  <data name="langToolTip01" xml:space="preserve">
+    <value>Długość worka filtracyjnego</value>
+  </data>
+  <data name="langToolTip02" xml:space="preserve">
+    <value>Powierzchnia filtracyjna jednego worka filtracyjnego</value>
+  </data>
+  <data name="langToolTip03" xml:space="preserve">
+    <value>Powierzchnia filtracyjna wszystkich worków filtracyjnych</value>
+  </data>
+  <data name="langToolTip04" xml:space="preserve">
+    <value>Wydajność filtra dla podanych parametrów workó filtracyjnych</value>
+  </data>
+  <data name="langToolTip05_1" xml:space="preserve">
+    <value>Współczynnik przepuszczalności dla zadanych:</value>
+  </data>
+  <data name="langToolTip05_2" xml:space="preserve">
+    <value>wydajności filtra oraz ilości worków filtracyjnych</value>
+  </data>
+  <data name="langToolTip06_1" xml:space="preserve">
+    <value>Ilość worków filtracyjnych dla zadanych:</value>
+  </data>
+  <data name="langToolTip06_2" xml:space="preserve">
+    <value>wydajności filtra oraz parametrów worka filtracyjnego</value>
+  </data>
+  <data name="langToolTip11" xml:space="preserve">
+    <value>Średnica worka filtracyjnego</value>
+  </data>
+  <data name="langToolTip12" xml:space="preserve">
+    <value>Przepuszczalność tkaniny filtracyjnej</value>
+  </data>
+  <data name="langToolTip13" xml:space="preserve">
+    <value>Ilość worków filtracyjnych zastosowanych w filtrze</value>
+  </data>
+  <data name="langToolTip14" xml:space="preserve">
+    <value>Zakładana wydajność urządzenia filtrującego</value>
+  </data>
+  <data name="langTotalArea" xml:space="preserve">
+    <value>Całk.pow.</value>
+  </data>
+  <data name="langTotalEfficiency" xml:space="preserve">
+    <value>Całk.wydaj.</value>
   </data>
 </root>
