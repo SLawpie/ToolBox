@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using ToolBox.Commands;
+using ToolBox.Tools;
 using WPFLocalizeExtension.Engine;
 using WPFLocalizeExtension.Extensions;
 using ToolBox.Models;

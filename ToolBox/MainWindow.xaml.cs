@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ToolBox.Commands;
+using ToolBox.Tools;
 using ToolBox.Converters;
 using WPFLocalizeExtension.Extensions;
 using ToolBox.ViewModels;

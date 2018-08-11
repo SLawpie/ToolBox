@@ -62,7 +62,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
-    <Compile Include="Commands\SwitchCulture.cs" />
+    <Compile Include="Tools\SwitchCulture.cs" />
     <Compile Include="Converters\WidthConverter.cs" />
     <Compile Include="Models\Filter.cs" />
     <Compile Include="Models\Language.cs" />
@@ -87,6 +87,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Translation.pl-PL.resx</DependentUpon>
     </Compile>
+    <Compile Include="Tools\TextBoxInputs.cs" />
     <Compile Include="ViewModels\FiltrationAreaViewModel.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Page Include="MainWindow.xaml">
@@ -160,8 +161,6 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Translation.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -28,8 +28,7 @@ namespace ToolBox.ViewModels
             numberOfFilters = initialValues[2, 1];
             totalEfficiency = initialValues[3, 1];
 
-            aqq = filterDiameter;
-
+            aqq = String.Format("{0} - {1} - {2} - {3}", filterDiameter, filterFactor, numberOfFilters, totalEfficiency);
             filters = new List<Filter>();
 
             Filters.Clear();
@@ -39,13 +38,19 @@ namespace ToolBox.ViewModels
         private string aqq;
         public string Aqq
         {
-            get { return aqq; }
+            get
+            {
+                // return aqq;
+                return aqq = String.Format("{0} - {1} - {2} - {3}", filterDiameter, filterFactor, numberOfFilters, totalEfficiency);
+            }
             set
             {
                 aqq = value;
                 NotifyPropertyChanged();
             }
         }
+
+
 
         private List<Filter> filters;
         public List<Filter> Filters
@@ -61,7 +66,7 @@ namespace ToolBox.ViewModels
             set
             { 
                 filterDiameter = value;
-                Aqq = filterDiameter;
+                NotifyPropertyChanged("Aqq");
                 NotifyPropertyChanged();
             }
         }
@@ -73,6 +78,7 @@ namespace ToolBox.ViewModels
             set
             {
                 filterFactor = value;
+                NotifyPropertyChanged("Aqq");
                 NotifyPropertyChanged();
             }
         }
@@ -84,6 +90,7 @@ namespace ToolBox.ViewModels
             set
             {
                 numberOfFilters = value;
+                NotifyPropertyChanged("Aqq");
                 NotifyPropertyChanged();
             }
         }
@@ -95,6 +102,7 @@ namespace ToolBox.ViewModels
             set
             {
                 totalEfficiency = value;
+                NotifyPropertyChanged("Aqq");
                 NotifyPropertyChanged();
             }
         }

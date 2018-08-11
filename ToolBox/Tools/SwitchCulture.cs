@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Globalization;
 using WPFLocalizeExtension.Engine;
 
-namespace ToolBox.Commands
+namespace ToolBox.Tools
 {
     public class SwitchCulture
     {
